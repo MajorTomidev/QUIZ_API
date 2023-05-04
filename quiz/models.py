@@ -9,7 +9,7 @@ COURSE_CHOICES = (
         (2, _('Backend')),
     )
 
-# QUESTION MODEL
+# QUESTION MODEL-------------------------------------------------------------------------------
 class Question(models.Model):
     course = models.IntegerField(choices=COURSE_CHOICES, default=0, verbose_name=_('Course'))
     question = models.TextField()
@@ -25,7 +25,7 @@ class Question(models.Model):
         verbose_name_plural = _('Questions')
         ordering = ['id']
 
-# ANSWER MODEL
+# ANSWER MODEL------------------------------------------------------------------------------------
 class Answer(models.Model):
     question = models.ForeignKey(Question, related_name='answer', on_delete=models.DO_NOTHING)
     answer_text = models.CharField(max_length=255, verbose_name=_('Answer Text'))
@@ -34,7 +34,7 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.answer_text
-    
+
     class Meta:
         verbose_name = _('Answer')
         verbose_name_plural = _('Answers')

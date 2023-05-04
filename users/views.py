@@ -20,20 +20,20 @@ from .models import Profile
 # Create your views here.
 
 
-class RegisterUserAPIView(APIView):
-    permission_classes = (AllowAny,)
+# class RegisterUserAPIView(APIView):
+#     permission_classes = (AllowAny,)
 
-    def post(self, request, format=None):
-        serializer = UserRegistrationSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.save()
-        data = {}
-        data['Response'] = 'User created successfully'
-        data['Email'] = user.email
-        data['Username'] = user.username
-        data['status_code'] = status.HTTP_201_CREATED
+#     def post(self, request, format=None):
+#         serializer = UserRegistrationSerializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         user = serializer.save()
+#         data = {}
+#         data['Response'] = 'User created successfully'
+#         data['Email'] = user.email
+#         data['Username'] = user.username
+#         data['status_code'] = status.HTTP_201_CREATED
 
-        return Response(data=data, status=status.HTTP_201_CREATED)
+#         return Response(data=data, status=status.HTTP_201_CREATED)
 
 class CreateUserAPIView(APIView):
     # Allow any user (authenticated or not) to access this url 
@@ -85,7 +85,7 @@ def authenticate_user(request):
     
 class UserRetrieveUpdateAPIView(RetrieveUpdateAPIView):
     # Allows only authenticated users to access this url
-    permission_classes= (IsAuthenticated)
+    permission_classes= (IsAuthenticated,)
     serializer_class = UserSerializer
 
     def get(self, request, *args, **kwargs):
@@ -110,29 +110,29 @@ class UserRetrieveUpdateAPIView(RetrieveUpdateAPIView):
     
 
         
-class ApiUserProfileView(APIView):
-    permission_classes =[IsAuthenticated,]
+# class ApiUserProfileView(APIView):
+#     permission_classes =[IsAuthenticated,]
 
-    def get(self, request, format:None):
-        data ={}
-        current_profile = Profile.objects.get(user=self.request.user)
-        data['pk'] = User.objects.get(email=current_profile.user.email).pk
-        data['username'] = current_profile.user.username
-        data['email'] = current_profile.user.email
-        data['image'] = current_profile.image.url
-        data['phone_number'] = current_profile.phone_number
-        return Response(data=data, status=status.HTTP_200_OK)
+#     def get(self, request, format:None):
+#         data ={}
+#         current_profile = Profile.objects.get(user=self.request.user)
+#         data['pk'] = User.objects.get(email=current_profile.user.email).pk
+#         data['username'] = current_profile.user.username
+#         data['email'] = current_profile.user.email
+#         data['image'] = current_profile.image.url
+#         data['phone_number'] = current_profile.phone_number
+#         return Response(data=data, status=status.HTTP_200_OK)
     
-    def put(self, request, format:None):
-        try:
-            current_user = request.data.get('user')
-            user_profile = Profile.objects.get(user=current_user)
-        except User.DoesNotExist:
-            user_profile = None
-        serializer = UserProfileSerializer(user_profile, data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        print(serializer.data)
-        return Response (serializer.data, status=status.HTTP_202_ACCEPTED)
+#     def put(self, request, format:None):
+#         try:
+#             current_user = request.data.get('user')
+#             user_profile = Profile.objects.get(user=current_user)
+#         except User.DoesNotExist:
+#             user_profile = None
+#         serializer = UserProfileSerializer(user_profile, data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         print(serializer.data)
+#         return Response (serializer.data, status=status.HTTP_202_ACCEPTED)
 
 

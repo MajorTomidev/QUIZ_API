@@ -37,13 +37,13 @@ class RandomQuestionSerializer(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
 
     answer = AnswerSerializer(many=True, read_only=True)
-    question = serializers.StringRelatedField(many=True)
+    # question = serializers.StringRelatedField(many=True)
     
     class Meta:
         
         model = Question
         fields = [
-            'question',
+            # 'question',
             'course',
             'answer',  
         ]
