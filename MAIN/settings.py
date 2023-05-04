@@ -67,8 +67,8 @@ REST_FRAMEWORK = {
 
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "Blog API Project",
-    "DESCRIPTION": "A sample blog to learn about DRF",
+    "TITLE": "Quiz API Project",
+    "DESCRIPTION": "This is a django quiz app REST API that allows users to take quizzes, view their results. it is built using Django restframework with JWT authentication.",
     "VERSION": "1.0.0",
 }
 
