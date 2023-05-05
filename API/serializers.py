@@ -15,7 +15,7 @@ class AnswerSerializer(serializers.ModelSerializer):
 
         model = Answer
         fields = [
-            'id',
+            'question',
             'answer_text',
             'is_right',
         ]
@@ -37,14 +37,13 @@ class RandomQuestionSerializer(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
 
     answer = AnswerSerializer(many=True, read_only=True)
-    # question = serializers.StringRelatedField(many=True)
     
     class Meta:
         
         model = Question
         fields = [
-            # 'question',
             'course',
+            'question',
             'answer',  
         ]
 

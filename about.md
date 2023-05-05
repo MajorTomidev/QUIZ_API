@@ -1,5 +1,5 @@
 # Django Quiz Api
-### Project Description
+## Project Description
 
 This is a django quiz app with a web based API that allows users to take quizzes and view their results. This project was built using django rest framework with JWT authentication. The API has several endpoints which allows users to create quizzes, take quizzes, view their results and view questions by category. The API provides a secure and scalable platform for hosting quizzes online. It is designed to be flexible, easy to use and integrate with other systems. Overall, this django quiz app REST API is a reliable and efficient solution for hosting quizzes online. It provides a seamless user experience and is suitable for both small and large scale applications.
 
@@ -24,6 +24,7 @@ To install the Django Quiz API follow these steps;
 - **GET /api/allquestions/ :** Get a list of all Questions
 - **GET /api/allanswers/ :** Get a list of all Answers
 - **GET /api/course/str:topic/ :** Get Questions on a particular course
+- **GET /api/random/str:topic/ :** Get Random Questions on a particular course
 
 
 ## JWT API EndPoints
